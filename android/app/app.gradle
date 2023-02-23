@@ -1,0 +1,26 @@
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.mangagome"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def appName = "MangagoMe"
+                    def fileName = "$appName-${variant.versionName}-${variant.buildType.name}.apk"
+                    outputFileName = fileName.replace(" ", "_")
+                }
+            }
+        }
+    }
+}
