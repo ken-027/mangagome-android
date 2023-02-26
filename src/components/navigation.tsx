@@ -16,7 +16,9 @@ const Navigation: React.FC<props> = ({ onBack, onHome, onForward, title }) => {
       <Pressable onPress={onHome}>
         <Image style={styles.home} source={require('../assets/logo.png')} />
       </Pressable>
-      <Text style={styles.title}>{title || ''}</Text>
+      <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>
+        {title || ''}
+      </Text>
       <View style={styles.nav}>
         <Icon
           style={styles.button}
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFFE7F',
     textTransform: 'capitalize',
+    maxWidth: 320,
     fontSize: 18,
     fontWeight: 'bold',
   },
