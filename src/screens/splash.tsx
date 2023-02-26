@@ -19,7 +19,7 @@ const Splash: React.FC<unknown> = () => {
           alt='Logo'
         />
       </View>
-      <Text style={styles.text}>Your Anime Manga</Text>
+      <Text style={styles.text}>Your Manga Site</Text>
       <View style={styles.creditText}>
         <Text style={styles.poweredBy}>
           Powered by:{' '}

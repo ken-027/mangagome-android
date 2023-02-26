@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFFE7F',
     textTransform: 'capitalize',
-    maxWidth: 320,
+    maxWidth: '50%',
     fontSize: 18,
     fontWeight: 'bold',
   },
