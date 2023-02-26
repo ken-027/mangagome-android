@@ -1,20 +1,22 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/react-in-jsx-scope */
-import { View, StyleSheet, Image, Pressable } from 'react-native'
+import { View, StyleSheet, Image, Pressable, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 type props = {
   onBack: any
   onHome: any
   onForward: any
+  title?: string
 }
 
-const Navigation: React.FC<props> = ({ onBack, onHome, onForward }) => {
+const Navigation: React.FC<props> = ({ onBack, onHome, onForward, title }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={onHome}>
         <Image style={styles.home} source={require('../assets/logo.png')} />
       </Pressable>
+      <Text style={styles.title}>{title || ''}</Text>
       <View style={styles.nav}>
         <Icon
           style={styles.button}
@@ -58,6 +60,12 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     resizeMode: 'contain',
+  },
+  title: {
+    color: '#FFFE7F',
+    textTransform: 'capitalize',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 })
 

@@ -36,7 +36,7 @@ const Splash: React.FC<unknown> = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0E0E0E',
+    backgroundColor: '#2F2F3B',
     justifyContent: 'center',
     alignItems: 'center',
   },

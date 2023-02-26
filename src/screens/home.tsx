@@ -16,6 +16,7 @@ import Navigation from '../components/navigation'
 import Loading from '../components/loading'
 import Error from '../components/error'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import urlToTitle from '../utils/urlToTitle'
 
 const Home = () => {
   const [error, setError] = useState<any>()
@@ -23,13 +24,13 @@ const Home = () => {
   const [canBack, setcanBack] = useState<boolean>(true)
   const [canForward, setcanForward] = useState<boolean>(false)
   const [currentUrl, setcurrentUrl] = useState<string>('')
+  const [title, setTitle] = useState<string>('')
   // const [refreshing, setRefreshing] = useState(false)
   const webRef = useRef<any>(null)
   let lastBackButtonPress: any = null
 
   useEffect(() => {
     getUrl()
-    console.log(currentUrl)
   }, [currentUrl])
 
   useEffect(() => {}, [onTop])
@@ -81,8 +82,11 @@ const Home = () => {
   const navStateChange = async (navState: any) => {
     setcanBack(navState.canGoBack)
     setcanForward(navState.canGoForward)
-
+    const url: string = navState.url
+    // let mangaTitle = url.replace('https://www.mangago.me/read-manga/', '')
     await urlStore(navState.url)
+    const title = urlToTitle(url)
+    setTitle(title)
   }
 
   const toast = (title: string = '') => {
@@ -106,6 +110,7 @@ const Home = () => {
       }
       contentContainerStyle={styles.container}>
       <Navigation
+        title={title}
         onBack={() => (canBack ? webRef.current.goBack() : toast('No back'))}
         onForward={() =>
           canForward ? webRef.current.goForward() : toast('No next')

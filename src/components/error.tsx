@@ -23,6 +23,7 @@ const Error: React.FC<props> = ({ message }) => {
         <Icon name='assignment-late' size={30} color='#fff' />
         <Text style={styles.text}>{message || 'there something error'}</Text>
       </View>
+      <Text style={styles.textSmall}>Pull down to refresh</Text>
     </View>
   )
 }
@@ -73,6 +74,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,
+  },
+  textSmall: {
+    color: '#fff',
+    marginTop: 10,
+    fontSize: 14,
   },
 })
 
